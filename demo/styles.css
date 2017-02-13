@@ -1,0 +1,7 @@
+.container {
+    padding-top: 10px;
+}
+
+ul.pagination {
+    display: flex;
+}
