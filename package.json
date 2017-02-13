@@ -1,6 +1,6 @@
 {
     "name": "vuejs-uib-pagination",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Best and complete pagination plugin for Vue.js. Inspired in Angular Bootstrap Pagination.",
     "main": "dist/vuejs-uib-pagination.js",
     "scripts": {
@@ -23,5 +23,13 @@
         "typescript": "^2.1.5",
         "vue": "^2.1.10",
         "webpack": "^2.2.1"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sant123/vuejs-uib-pagination.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sant123/vuejs-uib-pagination/issues"
+    },
+    "homepage": "https://github.com/sant123/vuejs-uib-pagination#readme"
 }
