@@ -1,5 +1,5 @@
 # vuejs-uib-pagination
-Best and complete pagination plugin for Vue.js. Inspired in [Angular Bootstrap Pagination](https://angular-ui.github.io/bootstrap/#pagination).
+Best and complete pagination plugin for Vue.js 2.0. Inspired in [Angular Bootstrap Pagination](https://angular-ui.github.io/bootstrap/#pagination).
 
 ## Not Using Bootstrap?
 No problem! The plugin template is not 100% Bootstrap dependent, that is why you can build your own styles for your pagination!
