@@ -109,3 +109,8 @@ interface vueBinding {
     readonly arg: string;
     readonly modifiers: { [key: string]: boolean };
 }
+
+declare module "*.html" {
+    var html: string;
+    export default html;
+}
