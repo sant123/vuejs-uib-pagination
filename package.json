@@ -8,7 +8,13 @@
         "build": "webpack",
         "build-demo": "cd demo && webpack"
     },
-    "keywords": ["paginator", "pagination", "uib-pagination", "vuejs pagination", "vuejs paginator"],
+    "keywords": [
+        "paginator",
+        "pagination",
+        "uib-pagination",
+        "vuejs pagination",
+        "vuejs paginator"
+    ],
     "author": {
         "name": "Santiago Aguilar Hernández",
         "email": "santiago777@outlook.com"
@@ -16,13 +22,14 @@
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {
-        "awesome-typescript-loader": "^3.0.0-beta.18",
+        "awesome-typescript-loader": "^3.2.1",
         "bootstrap": "^3.3.7",
-        "http-server": "^0.9.0",
-        "source-map-loader": "^0.1.6",
-        "typescript": "^2.1.5",
-        "vue": "^2.1.10",
-        "webpack": "^2.2.1"
+        "html-loader": "^0.4.5",
+        "http-server": "^0.10.0",
+        "source-map-loader": "^0.2.1",
+        "typescript": "^2.4.1",
+        "vue": "^2.4.1",
+        "webpack": "^3.3.0"
     },
     "repository": {
         "type": "git",

@@ -1,6 +1,6 @@
 import data from "./core/data";
 import watch from "./core/watch";
-import template from "./core/template";
+import template from "./template/index.html";
 
 import * as props from "./core/props";
 import * as methods from "./core/methods";
