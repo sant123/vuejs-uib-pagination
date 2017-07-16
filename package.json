@@ -4,8 +4,9 @@
     "description": "Best and complete pagination plugin for Vue.js. Inspired in Angular Bootstrap Pagination.",
     "main": "dist/vuejs-uib-pagination.js",
     "scripts": {
-        "start": "hs -p 6592 -a localhost -c -1 -o",
-        "build": "webpack",
+        "start": "hs -p 6592 -a localhost -c-1 -o",
+        "build": "cross-env NODE_ENV=production webpack",
+        "build:dev": "webpack",
         "build-demo": "cd demo && webpack"
     },
     "keywords": [
@@ -24,6 +25,7 @@
     "devDependencies": {
         "awesome-typescript-loader": "^3.2.1",
         "bootstrap": "^3.3.7",
+        "cross-env": "^5.0.1",
         "html-loader": "^0.4.5",
         "http-server": "^0.10.0",
         "source-map-loader": "^0.2.1",
