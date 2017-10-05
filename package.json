@@ -1,13 +1,13 @@
 {
     "name": "vuejs-uib-pagination",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Best and complete pagination plugin for Vue.js. Inspired in Angular Bootstrap Pagination.",
     "main": "dist/vuejs-uib-pagination.js",
     "scripts": {
         "start": "hs -p 6592 -a localhost -c-1 -o",
-        "build": "cross-env NODE_ENV=production webpack",
-        "build:dev": "webpack",
-        "build-demo": "cd demo && webpack"
+        "build:js": "webpack --config webpack.dev.js -w",
+        "build:js:p": "webpack --config webpack.prod.js",
+        "build:demo:js": "cd demo && webpack -w"
     },
     "keywords": [
         "paginator",
@@ -23,15 +23,15 @@
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {
-        "awesome-typescript-loader": "^3.2.1",
+        "awesome-typescript-loader": "^3.2.3",
         "bootstrap": "^3.3.7",
-        "cross-env": "^5.0.1",
-        "html-loader": "^0.4.5",
+        "html-loader": "^0.5.1",
         "http-server": "^0.10.0",
-        "source-map-loader": "^0.2.1",
-        "typescript": "^2.4.1",
-        "vue": "^2.4.1",
-        "webpack": "^3.3.0"
+        "typescript": "^2.5.3",
+        "uglifyjs-webpack-plugin": "^0.4.6",
+        "vue": "^2.4.4",
+        "webpack": "^3.3.0",
+        "webpack-merge": "^4.1.0"
     },
     "repository": {
         "type": "git",

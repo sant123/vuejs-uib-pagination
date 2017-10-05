@@ -1,5 +1,5 @@
 import * as Vue from "vue";
-import * as pagination from "vuejs-uib-pagination";
+import pagination from "vuejs-uib-pagination";
 
 Vue.use(pagination);
 

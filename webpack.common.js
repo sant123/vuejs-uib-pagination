@@ -1,9 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 
-let isProd = process.env.NODE_ENV === "production";
-
-let webpack_config = {
+module.exports = {
     entry: {
         "vuejs-uib-pagination": "./src/index.ts"
     },
@@ -12,7 +10,6 @@ let webpack_config = {
         library: "vuejs-uib-pagination",
         libraryTarget: "umd"
     },
-    devtool: "source-map",
     resolve: {
         extensions: [".ts", ".js"]
     },
@@ -30,18 +27,5 @@ let webpack_config = {
                 }
             }
         ]
-    },
-    plugins: [
-
-    ]
+    }
 };
-
-if (isProd) {
-    let uglifyConfig = new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true
-    });
-
-    webpack_config.plugins.push(uglifyConfig);
-}
-
-module.exports = webpack_config;

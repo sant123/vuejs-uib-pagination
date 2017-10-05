@@ -7,7 +7,7 @@ import * as methods from "./core/methods";
 import * as computed from "./core/computed";
 import * as directives from "./core/directives";
 
-export function install(Vue, options) {
+function install(Vue, options) {
     Vue.component("uib-pagination", {
         data,
         props,
@@ -19,6 +19,9 @@ export function install(Vue, options) {
     });
 }
 
-if (typeof window !== 'undefined' && window["Vue"]) {
+export { install };
+export default install;
+
+if (typeof window !== "undefined" && window["Vue"]) {
     window["Vue"].use(install);
 }
