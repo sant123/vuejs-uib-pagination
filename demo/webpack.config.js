@@ -14,10 +14,5 @@ module.exports = {
             'vue$': 'vue/dist/vue.common.js',
             "vuejs-uib-pagination$": path.resolve(__dirname, "..", "./dist/vuejs-uib-pagination.js")
         }
-    },
-    module: {
-        rules: [
-            { test: /\.js$/, loader: "source-map-loader", enforce: "pre" }
-        ]
     }
 }
