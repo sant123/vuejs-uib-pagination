@@ -14,6 +14,10 @@ var app = new Vue({
             this.pagination1.currentPage = pageNo;
         },
 
+        pageLabelHtml: function (pageNo) {
+            return `<b>${pageNo}</b>`;
+        },
+
         pageChanged: function () {
             console.log('Page changed to: ' + this.pagination1.currentPage);
         },

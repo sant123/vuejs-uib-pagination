@@ -7,7 +7,7 @@
     </li>
     <li role="menuitem" v-for="(page, index) in pages" :key="index" :class="{ active: page.active, disabled: disabled && !page.active }"
         class="pagination-page">
-        <a href @click="selectPage(page.number, $event)" :disabled="disabled && !page.active" v-uib-tabindex-toggle="disabled && !page.active">{{ page.text }}</a>
+        <a href @click="selectPage(page.number, $event)" :disabled="disabled && !page.active" v-uib-tabindex-toggle="disabled && !page.active" v-html="page.text"></a>
     </li>
     <li role="menuitem" v-if="directionLinks" :class="{ disabled: isNoNextOrDisabled }" class="pagination-next">
         <a href @click="selectPage(currentPage + 1, $event)" :disabled="isNoNextOrDisabled" v-uib-tabindex-toggle="isNoNextOrDisabled">{{ getText('next') }}</a>

@@ -1,2 +1,418 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["vuejs-uib-pagination"]=t():e["vuejs-uib-pagination"]=t()}(this,function(){return function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={i:a,l:!1,exports:{}};return e[a].call(n.exports,n,n.exports,t),n.l=!0,n.exports}var i={};return t.m=e,t.c=i,t.d=function(e,i,a){t.o(e,i)||Object.defineProperty(e,i,{configurable:!1,enumerable:!0,get:a})},t.n=function(e){var i=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(i,"a",i),i},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=1)}([function(e,t,i){"use strict";function a(e){return e}function n(e){return void 0!==e}t.a=a,t.b=n},function(e,t,i){"use strict";function a(e,t){e.component("uib-pagination",{data:n.a,props:o,watch:r.a,methods:l,template:u.a,computed:c,directives:d})}Object.defineProperty(t,"__esModule",{value:!0}),i.d(t,"install",function(){return a});var n=i(2),r=i(3),s=i(4),u=i.n(s),o=i(5),l=i(6),c=i(7),d=i(8);t.default=a,"undefined"!=typeof window&&window.Vue&&window.Vue.use(a)},function(e,t,i){"use strict";var a=i(0);t.a=function(){return{currentPage:a.b(this.value.currentPage)?this.value.currentPage:1}}},function(e,t,i){"use strict";var a={"value.currentPage":function(e,t){this.currentPage=e,null!=t&&this.$emit("change")}};t.a=a},function(e,t){e.exports='<ul class=pagination role=menu> <li role=menuitem v-if=boundaryLinks :class="{ disabled: isNoPreviousOrDisabled }" class=pagination-first> <a href @click="selectPage(1, $event)" :disabled=isNoPreviousOrDisabled v-uib-tabindex-toggle=isNoPreviousOrDisabled>{{ getText(\'first\') }}</a> </li> <li role=menuitem v-if=directionLinks :class="{ disabled: isNoPreviousOrDisabled }" class=pagination-prev> <a href @click="selectPage(currentPage - 1, $event)" :disabled=isNoPreviousOrDisabled v-uib-tabindex-toggle=isNoPreviousOrDisabled>{{ getText(\'previous\') }}</a> </li> <li role=menuitem v-for="(page, index) in pages" :key=index :class="{ active: page.active, disabled: disabled && !page.active }" class=pagination-page> <a href @click="selectPage(page.number, $event)" :disabled="disabled && !page.active" v-uib-tabindex-toggle="disabled && !page.active">{{ page.text }}</a> </li> <li role=menuitem v-if=directionLinks :class="{ disabled: isNoNextOrDisabled }" class=pagination-next> <a href @click="selectPage(currentPage + 1, $event)" :disabled=isNoNextOrDisabled v-uib-tabindex-toggle=isNoNextOrDisabled>{{ getText(\'next\') }}</a> </li> <li role=menuitem v-if=boundaryLinks :class="{ disabled: isNoNextOrDisabled }" class=pagination-last> <a href @click="selectPage(totalPages, $event)" :disabled=isNoNextOrDisabled v-uib-tabindex-toggle=isNoNextOrDisabled>{{ getText(\'last\') }}</a> </li> </ul>'},function(e,t,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),i.d(t,"boundaryLinks",function(){return n}),i.d(t,"boundaryLinkNumbers",function(){return r}),i.d(t,"directionLinks",function(){return s}),i.d(t,"disabled",function(){return u}),i.d(t,"firstText",function(){return o}),i.d(t,"forceEllipses",function(){return l}),i.d(t,"itemsPerPage",function(){return c}),i.d(t,"lastText",function(){return d}),i.d(t,"maxSize",function(){return f}),i.d(t,"nextText",function(){return g}),i.d(t,"value",function(){return b}),i.d(t,"pageLabel",function(){return h}),i.d(t,"previousText",function(){return p}),i.d(t,"rotate",function(){return P}),i.d(t,"totalItems",function(){return v});var a=i(0),n={type:Boolean,default:!1},r={type:Boolean,default:!1},s={type:Boolean,default:!0},u={type:Boolean,default:!1},o={type:String,default:"First"},l={type:Boolean,default:!1},c={type:Number,default:10},d={type:String,default:"Last"},f={type:Number,default:void 0},g={type:String,default:"Next"},b={type:Object,required:!0,validator:function(e){return!a.b(e.currentPage)||"number"==typeof e.currentPage}},h={type:Function,default:a.a},p={type:String,default:"Previous"},P={type:Boolean,default:!0},v={type:Number,default:0}},function(e,t,i){"use strict";function a(e){return this[e+"Text"]}function n(e,t){t&&t.preventDefault(),(!this.disabled||!t)&&this.currentPage!==e&&e>0&&e<=this.totalPages&&(t&&t.target&&t.target.blur(),this.currentPage=e)}function r(e,t,i){return{number:e,text:t,active:i}}function s(e,t){var i={currentPage:e,numPages:t};return Object.defineProperties(i,{numPages:{get:function(){return t}}}),i}Object.defineProperty(t,"__esModule",{value:!0}),t.getText=a,t.selectPage=n,t.makePage=r,t.createDataForModel=s},function(e,t,i){"use strict";function a(){return this.noPrevious||this.disabled}function n(){return this.noNext||this.disabled}function r(){return this.value.currentPage===this.totalPages}function s(){return 1===this.value.currentPage}function u(){var e=this.itemsPerPage<1?1:Math.ceil(this.totalItems/this.itemsPerPage);return Math.max(e||0,1)}function o(){var e=[];if(this.currentPage<=0||this.currentPage>this.totalPages)return e;var t=1,i=this.totalPages,a=l.b(this.maxSize)&&this.maxSize<this.totalPages;a&&(this.rotate?(t=Math.max(this.currentPage-Math.floor(this.maxSize/2),1),(i=t+this.maxSize-1)>this.totalPages&&(i=this.totalPages,t=i-this.maxSize+1)):(t=(Math.ceil(this.currentPage/this.maxSize)-1)*this.maxSize+1,i=Math.min(t+this.maxSize-1,this.totalPages)));for(var n=t;n<=i;n++){var r=this.makePage(n,this.pageLabel(n),n===this.currentPage);e.push(r)}if(a&&this.maxSize>0&&(!this.rotate||this.forceEllipses||this.boundaryLinkNumbers)){if(t>1){if(!this.boundaryLinkNumbers||t>3){var s=this.makePage(t-1,"...",!1);e.unshift(s)}if(this.boundaryLinkNumbers){if(3===t){var u=this.makePage(2,"2",!1);e.unshift(u)}var o=this.makePage(1,"1",!1);e.unshift(o)}}if(i<this.totalPages){if(!this.boundaryLinkNumbers||i<this.totalPages-2){var c=this.makePage(i+1,"...",!1);e.push(c)}if(this.boundaryLinkNumbers){if(i===this.totalPages-2){var d=this.makePage(this.totalPages-1,this.totalPages-1,!1);e.push(d)}var f=this.makePage(this.totalPages,this.totalPages,!1);e.push(f)}}}return this.$emit("input",this.createDataForModel(this.currentPage,this.totalPages)),e}Object.defineProperty(t,"__esModule",{value:!0}),t.isNoPreviousOrDisabled=a,t.isNoNextOrDisabled=n,t.noNext=r,t.noPrevious=s,t.totalPages=u,t.pages=o;var l=i(0)},function(e,t,i){"use strict";function a(e,t){t.value?e.setAttribute("tabindex","-1"):e.removeAttribute("tabindex")}Object.defineProperty(t,"__esModule",{value:!0}),t.uibTabindexToggle=a}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["vuejs-uib-pagination"] = factory();
+	else
+		root["vuejs-uib-pagination"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = identity;
+/* harmony export (immutable) */ __webpack_exports__["b"] = isDefined;
+function identity(value) {
+    return value;
+}
+function isDefined(value) {
+    return typeof value !== "undefined";
+}
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_data__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_watch__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__template_index_html__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__template_index_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__template_index_html__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_props__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_methods__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_computed__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_directives__ = __webpack_require__(8);
+
+
+
+
+
+
+
+function install(Vue, options) {
+    Vue.component("uib-pagination", {
+        data: __WEBPACK_IMPORTED_MODULE_0__core_data__["a" /* default */],
+        props: __WEBPACK_IMPORTED_MODULE_3__core_props__,
+        watch: __WEBPACK_IMPORTED_MODULE_1__core_watch__["a" /* default */],
+        methods: __WEBPACK_IMPORTED_MODULE_4__core_methods__,
+        template: __WEBPACK_IMPORTED_MODULE_2__template_index_html___default.a,
+        computed: __WEBPACK_IMPORTED_MODULE_5__core_computed__,
+        directives: __WEBPACK_IMPORTED_MODULE_6__core_directives__
+    });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (install);
+if (typeof window !== "undefined" && window["Vue"]) {
+    window["Vue"].use(install);
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+    var currentPage = __WEBPACK_IMPORTED_MODULE_0__utils__["b" /* isDefined */](this.value.currentPage) ? this.value.currentPage : 1;
+    var data = { currentPage: currentPage };
+    return data;
+});
+;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var watch = {
+    "value.currentPage": function (value, oldValue) {
+        this.currentPage = value;
+        if (oldValue == null) {
+            return;
+        }
+        this.$emit("change");
+    }
+};
+/* harmony default export */ __webpack_exports__["a"] = (watch);
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = "<ul class=pagination role=menu> <li role=menuitem v-if=boundaryLinks :class=\"{ disabled: isNoPreviousOrDisabled }\" class=pagination-first> <a href @click=\"selectPage(1, $event)\" :disabled=isNoPreviousOrDisabled v-uib-tabindex-toggle=isNoPreviousOrDisabled>{{ getText('first') }}</a> </li> <li role=menuitem v-if=directionLinks :class=\"{ disabled: isNoPreviousOrDisabled }\" class=pagination-prev> <a href @click=\"selectPage(currentPage - 1, $event)\" :disabled=isNoPreviousOrDisabled v-uib-tabindex-toggle=isNoPreviousOrDisabled>{{ getText('previous') }}</a> </li> <li role=menuitem v-for=\"(page, index) in pages\" :key=index :class=\"{ active: page.active, disabled: disabled && !page.active }\" class=pagination-page> <a href @click=\"selectPage(page.number, $event)\" :disabled=\"disabled && !page.active\" v-uib-tabindex-toggle=\"disabled && !page.active\" v-html=page.text></a> </li> <li role=menuitem v-if=directionLinks :class=\"{ disabled: isNoNextOrDisabled }\" class=pagination-next> <a href @click=\"selectPage(currentPage + 1, $event)\" :disabled=isNoNextOrDisabled v-uib-tabindex-toggle=isNoNextOrDisabled>{{ getText('next') }}</a> </li> <li role=menuitem v-if=boundaryLinks :class=\"{ disabled: isNoNextOrDisabled }\" class=pagination-last> <a href @click=\"selectPage(totalPages, $event)\" :disabled=isNoNextOrDisabled v-uib-tabindex-toggle=isNoNextOrDisabled>{{ getText('last') }}</a> </li> </ul>";
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "boundaryLinks", function() { return boundaryLinks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "boundaryLinkNumbers", function() { return boundaryLinkNumbers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "directionLinks", function() { return directionLinks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "disabled", function() { return disabled; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "firstText", function() { return firstText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forceEllipses", function() { return forceEllipses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemsPerPage", function() { return itemsPerPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lastText", function() { return lastText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "maxSize", function() { return maxSize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nextText", function() { return nextText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "value", function() { return value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pageLabel", function() { return pageLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "previousText", function() { return previousText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotate", function() { return rotate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "totalItems", function() { return totalItems; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+
+var boundaryLinks = {
+    type: Boolean,
+    default: false
+};
+var boundaryLinkNumbers = {
+    type: Boolean,
+    default: false
+};
+var directionLinks = {
+    type: Boolean,
+    default: true
+};
+var disabled = {
+    type: Boolean,
+    default: false
+};
+var firstText = {
+    type: String,
+    default: "First"
+};
+var forceEllipses = {
+    type: Boolean,
+    default: false
+};
+var itemsPerPage = {
+    type: Number,
+    default: 10
+};
+var lastText = {
+    type: String,
+    default: "Last"
+};
+var maxSize = {
+    type: Number,
+    default: undefined
+};
+var nextText = {
+    type: String,
+    default: "Next"
+};
+/* vModel { currentPage: 1, numPages: 10 } */
+var value = {
+    type: Object,
+    required: true,
+    validator: function (value) {
+        return !__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* isDefined */](value.currentPage) || typeof value.currentPage === "number";
+    }
+};
+var pageLabel = {
+    type: Function,
+    default: __WEBPACK_IMPORTED_MODULE_0__utils__["a" /* identity */]
+};
+var previousText = {
+    type: String,
+    default: "Previous"
+};
+var rotate = {
+    type: Boolean,
+    default: true
+};
+var totalItems = {
+    type: Number,
+    default: 0
+};
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["getText"] = getText;
+/* harmony export (immutable) */ __webpack_exports__["selectPage"] = selectPage;
+/* harmony export (immutable) */ __webpack_exports__["makePage"] = makePage;
+/* harmony export (immutable) */ __webpack_exports__["createDataForModel"] = createDataForModel;
+function getText(key) {
+    return this[key + "Text"];
+}
+function selectPage(page, evt) {
+    if (evt) {
+        evt.preventDefault();
+    }
+    var clickAllowed = !this.disabled || !evt;
+    if (clickAllowed && this.currentPage !== page && page > 0 && page <= this.totalPages) {
+        if (evt && evt.target) {
+            evt.target.blur();
+        }
+        this.currentPage = page;
+    }
+}
+function makePage(number, text, isActive) {
+    return { number: number, text: text, active: isActive };
+}
+function createDataForModel(currentPage, numPages) {
+    var data = { currentPage: currentPage, numPages: numPages };
+    Object.defineProperties(data, {
+        numPages: {
+            get: function () {
+                return numPages;
+            }
+        }
+    });
+    return data;
+}
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["isNoPreviousOrDisabled"] = isNoPreviousOrDisabled;
+/* harmony export (immutable) */ __webpack_exports__["isNoNextOrDisabled"] = isNoNextOrDisabled;
+/* harmony export (immutable) */ __webpack_exports__["noNext"] = noNext;
+/* harmony export (immutable) */ __webpack_exports__["noPrevious"] = noPrevious;
+/* harmony export (immutable) */ __webpack_exports__["totalPages"] = totalPages;
+/* harmony export (immutable) */ __webpack_exports__["pages"] = pages;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
+
+function isNoPreviousOrDisabled() {
+    return this.noPrevious || this.disabled;
+}
+function isNoNextOrDisabled() {
+    return this.noNext || this.disabled;
+}
+function noNext() {
+    return this.value.currentPage === this.totalPages;
+}
+function noPrevious() {
+    return this.value.currentPage === 1;
+}
+function totalPages() {
+    var totalPages = this.itemsPerPage < 1 ? 1 : Math.ceil(this.totalItems / this.itemsPerPage);
+    return Math.max(totalPages || 0, 1);
+}
+function pages() {
+    var pages = [];
+    if (this.currentPage <= 0 || this.currentPage > this.totalPages) {
+        return pages;
+    }
+    // Default page limits
+    var startPage = 1, endPage = this.totalPages;
+    var isMaxSized = __WEBPACK_IMPORTED_MODULE_0__utils__["b" /* isDefined */](this.maxSize) && this.maxSize < this.totalPages;
+    // recompute if maxSize
+    if (isMaxSized) {
+        if (this.rotate) {
+            // Current page is displayed in the middle of the visible ones 
+            startPage = Math.max(this.currentPage - Math.floor(this.maxSize / 2), 1);
+            endPage = startPage + this.maxSize - 1;
+            // Adjust if limit is exceeded
+            if (endPage > this.totalPages) {
+                endPage = this.totalPages;
+                startPage = endPage - this.maxSize + 1;
+            }
+        }
+        else {
+            // Visible pages are paginated with maxSize
+            startPage = (Math.ceil(this.currentPage / this.maxSize) - 1) * this.maxSize + 1;
+            // Adjust last page if limit is exceeded
+            endPage = Math.min(startPage + this.maxSize - 1, this.totalPages);
+        }
+    }
+    // Add page number links
+    for (var number = startPage; number <= endPage; number++) {
+        var page = this.makePage(number, this.pageLabel(number), number === this.currentPage);
+        pages.push(page);
+    }
+    // Add links to move between page sets
+    if (isMaxSized && this.maxSize > 0 && (!this.rotate || this.forceEllipses || this.boundaryLinkNumbers)) {
+        if (startPage > 1) {
+            if (!this.boundaryLinkNumbers || startPage > 3) {
+                var previousPageSet = this.makePage(startPage - 1, '...', false);
+                pages.unshift(previousPageSet);
+            }
+            if (this.boundaryLinkNumbers) {
+                if (startPage === 3) {
+                    var secondPageLink = this.makePage(2, '2', false);
+                    pages.unshift(secondPageLink);
+                }
+                //add the first page
+                var firstPageLink = this.makePage(1, '1', false);
+                pages.unshift(firstPageLink);
+            }
+        }
+        if (endPage < this.totalPages) {
+            if (!this.boundaryLinkNumbers || endPage < this.totalPages - 2) {
+                var nextPageSet = this.makePage(endPage + 1, '...', false);
+                pages.push(nextPageSet);
+            }
+            if (this.boundaryLinkNumbers) {
+                if (endPage === this.totalPages - 2) {
+                    var secondToLastPageLink = this.makePage(this.totalPages - 1, this.totalPages - 1, false);
+                    pages.push(secondToLastPageLink);
+                }
+                //add the last page
+                var lastPageLink = this.makePage(this.totalPages, this.totalPages, false);
+                pages.push(lastPageLink);
+            }
+        }
+    }
+    //  Emit the new data to the parent.
+    this.$emit("input", this.createDataForModel(this.currentPage, this.totalPages));
+    return pages;
+}
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["uibTabindexToggle"] = uibTabindexToggle;
+function uibTabindexToggle(el, binding) {
+    if (binding.value)
+        el.setAttribute("tabindex", "-1");
+    else
+        el.removeAttribute("tabindex");
+}
+
+
+/***/ })
+/******/ ]);
+});
 //# sourceMappingURL=vuejs-uib-pagination.js.map

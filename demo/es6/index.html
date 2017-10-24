@@ -20,6 +20,11 @@
 
         <div is="uib-pagination" :direction-links="false" :total-items="totalItems" v-model="pagination1"></div>
 
+        <div is="uib-pagination"  :direction-links="false" :total-items="totalItems" v-model="pagination1" :page-label="pageLabelHtml"></div>
+
+        <h6><code>page-label</code> returning <code>raw html</code>:</h6>
+        <div is="uib-pagination"  :direction-links="false" :total-items="totalItems" v-model="pagination1" :page-label="pageLabelHtml"></div>
+
         <pre>The selected page no: {{pagination1.currentPage}}</pre>
 
         <button type="button" class="btn btn-info" @click="setPage(3)">Set current page to: 3</button>
