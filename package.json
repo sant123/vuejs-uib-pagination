@@ -13,9 +13,7 @@
         "build:demo:js:w": "cd demo && webpack -w",
         
         "build:js:p": "webpack --config webpack.prod.js",
-        "build:js:p:w": "webpack --config webpack.prod.js -w",
-        
-        "prepublish": "webpack --config webpack.prod.js"
+        "build:js:p:w": "webpack --config webpack.prod.js -w"
     },
     "keywords": [
         "paginator",
