@@ -2,7 +2,7 @@ var app = new Vue({
     el: "#app",
     data: {
         totalItems: 64,
-        
+
         pagination1: {
             currentPage: 4
         },
@@ -13,6 +13,10 @@ var app = new Vue({
 
         setPage: function (pageNo) {
             this.pagination1.currentPage = pageNo;
+        },
+
+        pageLabelHtml: function (pageNo) {
+            return `<b>${pageNo}</b>`;
         },
 
         pageChanged: function () {
