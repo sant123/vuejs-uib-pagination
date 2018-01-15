@@ -13,7 +13,7 @@ export function selectPage(this: uibPagination, page: number, evt) {
         if (evt && evt.target) {
             evt.target.blur();
         }
-        this.currentPage = page;
+       this.changeOnClick ? this.$emit('changed') : this.currentPage = page;
     }
 }
 
