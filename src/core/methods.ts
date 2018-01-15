@@ -14,7 +14,7 @@ export function selectPage(this: uibPagination, page: number, evt) {
             evt.target.blur();
         }
         this.currentPage = page;
-        if (this.changeOnClick) this.$emit('changed')
+        if (this.changeOnClick) { this.$emit("change"); }
     }
 }
 
