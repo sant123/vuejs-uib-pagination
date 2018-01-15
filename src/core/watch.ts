@@ -4,7 +4,7 @@ let watch = {
 
         if (oldValue == null) { return; }
 
-        this.$emit("change");
+        if (!this.changeOnClick) { this.$emit("change"); }
     }
 };
 

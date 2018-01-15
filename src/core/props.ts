@@ -50,6 +50,11 @@ export let nextText = {
     default: "Next"
 };
 
+export let changeOnClick = {
+    type: Boolean,
+    default: false
+};
+
 /* vModel { currentPage: 1, numPages: 10 } */
 export let value = {
     type: Object,

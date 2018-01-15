@@ -66,6 +66,9 @@ interface uibPaginationProps {
     /** Property - Text for Next button. */
     readonly nextText: string;
 
+    /** Property - Emit `change` events on click. */
+    readonly changeOnClick: boolean;
+
     /** Property - V-model from parent. */
     readonly value: uibParentModel;
 
